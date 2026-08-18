@@ -1,0 +1,687 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #4f84c0;
+    --primary-dark: #0d47a1;
+    --secondary: #42a5f5;
+    --light-blue: #eef6ff;
+    --soft-blue: #e3f2fd;
+    --white: #ffffff;
+    --text: #263238;
+    --muted: #607d8b;
+    --shadow: 0 10px 30px rgba(13, 71, 161, 0.12);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #f5faff, var(--light-blue));
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+header {
+    background: linear-gradient(135deg, var(--primary-dark), var(--secondary));
+    color: var(--white);
+    min-height: 125px;
+    padding: 22px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    box-shadow: 0 4px 15px rgba(13, 71, 161, 0.18);
+}
+
+header img {
+    width: 78px;
+    height: 78px;
+    object-fit: contain;
+    border-radius: 18px;
+    background: var(--white);
+    padding: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.18);
+}
+
+header h1 {
+    font-size: clamp(32px, 5vw, 48px);
+    letter-spacing: 1px;
+    font-weight: 800;
+}
+
+nav {
+    background: var(--primary-dark);
+    padding: 14px 18px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+nav a {
+    display: inline-block;
+    color: var(--white);
+    text-decoration: none;
+    margin: 5px 7px;
+    padding: 9px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    transition: 0.25s ease;
+}
+
+nav a:hover,
+nav a:focus {
+    background: rgba(255, 255, 255, 0.14);
+    color: #ffeb3b;
+    transform: translateY(-1px);
+}
+
+main {
+    width: min(1200px, 92%);
+    margin: 0 auto;
+    padding: 42px 0;
+}
+
+.container {
+    width: 100%;
+    margin: auto;
+}
+
+section,
+aside,
+.login-box,
+.register-box,
+.title,
+.heading,
+.welcome,
+.activity,
+.feedback-form,
+.form-box,
+.profile-card,
+.skills,
+.help {
+    background: var(--white);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+}
+
+section h2,
+.title h2,
+.heading h2,
+.welcome h2,
+.activity h2,
+.form-box h2,
+.feedback-form h2,
+.help h2,
+.profile-card h2,
+.skills h2 {
+    color: var(--primary);
+}
+
+p {
+    color: var(--text);
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+button {
+    transition: 0.25s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+input,
+select,
+textarea {
+    background: #fbfdff;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.12);
+}
+
+footer {
+    background: var(--primary-dark);
+    color: var(--white);
+    text-align: center;
+    padding: 20px;
+    margin-top: 35px;
+}
+
+footer p {
+    color: var(--white);
+    margin: 0;
+}
+
+/* Home */
+main:has(aside) {
+    display: flex;
+    gap: 28px;
+    align-items: stretch;
+}
+
+main:has(aside) section {
+    flex: 3;
+    padding: 34px;
+}
+
+main:has(aside) aside {
+    flex: 1;
+    padding: 30px;
+}
+
+main:has(aside) section h2,
+main:has(aside) aside h2 {
+    margin-bottom: 16px;
+}
+
+main:has(aside) section p {
+    font-size: 17px;
+    line-height: 1.9;
+}
+
+main:has(aside) section img {
+    width: 100%;
+    margin-top: 25px;
+    border-radius: 15px;
+}
+
+/* About / Admin */
+.container > h2,
+.container > article {
+    margin-bottom: 20px;
+}
+
+.card,
+article {
+    transition: 0.25s ease;
+}
+
+.card:hover,
+article:hover {
+    transform: translateY(-4px);
+}
+
+/* Cards */
+.cards,
+.contact-cards,
+.sections,
+.events,
+.skill-list {
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+}
+
+.card,
+.contact-card,
+.box,
+.event-card,
+.faq-box {
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 7px 20px rgba(13, 71, 161, 0.09);
+}
+
+/* Forms */
+.login-box,
+.register-box,
+.form-box,
+.feedback-form {
+    width: min(100%, 520px);
+    margin: auto;
+}
+
+label {
+    display: block;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: 7px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 12px 14px;
+    margin: 6px 0 18px;
+    border: 1px solid #cfd8dc;
+    border-radius: 10px;
+    font-size: 15px;
+    color: var(--text);
+}
+
+button {
+    width: 100%;
+    padding: 13px 16px;
+    background: var(--primary);
+    color: var(--white);
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+button:hover {
+    background: var(--primary-dark);
+}
+
+/* Login */
+.login-box {
+    padding: 38px;
+}
+
+.login-box h2,
+.register-box h2 {
+    text-align: center;
+    margin-bottom: 26px;
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.options label {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin: 0;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.options input {
+    width: auto;
+    margin: 0;
+}
+
+.options a,
+.register a,
+.login-link a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.options a:hover,
+.register a:hover,
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+.register,
+.login-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Register */
+.register-box {
+    padding: 38px;
+}
+
+.gender {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin: 8px 0 18px;
+}
+
+.gender label {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.gender input {
+    width: auto;
+    margin: 0;
+}
+
+/* Dashboard */
+.dashboard {
+    width: 100%;
+}
+
+.welcome {
+    padding: 32px;
+    text-align: center;
+}
+
+.welcome h2 {
+    margin-bottom: 12px;
+}
+
+.welcome p {
+    font-size: 17px;
+}
+
+.dashboard .cards {
+    margin-top: 28px;
+}
+
+.dashboard .card {
+    flex: 1 1 220px;
+    padding: 26px;
+    border-top: 5px solid var(--primary);
+}
+
+.dashboard .card h3 {
+    color: var(--primary-dark);
+    margin-bottom: 12px;
+}
+
+.activity {
+    margin-top: 28px;
+    padding: 30px;
+}
+
+.activity h2 {
+    margin-bottom: 15px;
+}
+
+.activity ul {
+    padding-left: 22px;
+}
+
+.activity li {
+    margin-bottom: 10px;
+}
+
+/* Events */
+.title,
+.heading {
+    padding: 32px;
+    text-align: center;
+}
+
+.title h2,
+.heading h2 {
+    margin-bottom: 12px;
+}
+
+.event-section {
+    margin-top: 30px;
+}
+
+.event-section > h2 {
+    margin-bottom: 18px;
+}
+
+.event-card {
+    flex: 1 1 280px;
+    padding: 25px;
+    border-top: 5px solid var(--primary);
+    transition: 0.25s ease;
+}
+
+.event-card:hover {
+    transform: translateY(-7px);
+}
+
+.event-card h3 {
+    color: var(--primary-dark);
+    margin-bottom: 10px;
+}
+
+.event-card p {
+    margin-bottom: 10px;
+}
+
+.event-card span {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+/* FAQ */
+.faq-box {
+    padding: 24px;
+    margin-bottom: 18px;
+    border-left: 6px solid var(--primary);
+    transition: 0.25s ease;
+}
+
+.faq-box:hover {
+    transform: translateY(-4px);
+}
+
+.faq-box h3 {
+    color: var(--primary-dark);
+    margin-bottom: 10px;
+}
+
+.faq-box p {
+    color: #455a64;
+}
+
+/* Contact */
+.contact-cards {
+    margin-top: 28px;
+}
+
+.contact-card {
+    flex: 1 1 220px;
+    padding: 25px;
+    text-align: center;
+    border-top: 5px solid var(--primary);
+    transition: 0.25s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-6px);
+}
+
+.contact-card h3 {
+    color: var(--primary-dark);
+    margin-bottom: 10px;
+}
+
+/* Feedback */
+.feedback-form {
+    width: 100%;
+    max-width: 850px;
+    margin-top: 28px;
+    padding: 35px;
+}
+
+.feedback-form h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.rating {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 22px;
+}
+
+.rating label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+    color: var(--text);
+}
+
+.rating input {
+    width: auto;
+    margin: 0;
+}
+
+/* Profile */
+.profile-card {
+    padding: 35px;
+    text-align: center;
+}
+
+.profile-card img {
+    width: 145px;
+    height: 145px;
+    border-radius: 50%;
+    border: 5px solid var(--primary);
+    object-fit: cover;
+    box-shadow: 0 7px 18px rgba(21, 101, 192, 0.18);
+}
+
+.profile-card h2 {
+    margin-top: 15px;
+}
+
+.profile-card p {
+    margin-top: 9px;
+}
+
+.sections {
+    margin-top: 28px;
+}
+
+.box {
+    flex: 1 1 300px;
+    padding: 26px;
+    border-top: 5px solid var(--primary);
+}
+
+.box h3 {
+    color: var(--primary-dark);
+    margin-bottom: 14px;
+}
+
+.box p {
+    margin-bottom: 10px;
+}
+
+.skills {
+    margin-top: 28px;
+    padding: 30px;
+}
+
+.skills h2 {
+    margin-bottom: 18px;
+}
+
+.skill {
+    background: var(--soft-blue);
+    color: var(--primary-dark);
+    padding: 9px 18px;
+    border-radius: 25px;
+    font-weight: 700;
+}
+
+/* Admin */
+main section {
+    padding: 35px;
+}
+
+main section > h2 {
+    margin-bottom: 25px;
+}
+
+main article {
+    background: #f8fbff;
+    border-left: 6px solid var(--primary);
+    padding: 23px;
+    margin-bottom: 18px;
+    border-radius: 12px;
+}
+
+main article h3 {
+    color: var(--primary);
+    margin-bottom: 8px;
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+    main:has(aside) {
+        flex-direction: column;
+    }
+
+    .cards,
+    .contact-cards,
+    .sections {
+        flex-direction: column;
+    }
+
+    .event-card {
+        flex-basis: 100%;
+    }
+}
+
+@media (max-width: 700px) {
+    header {
+        min-height: 105px;
+        padding: 18px;
+    }
+
+    header img {
+        width: 62px;
+        height: 62px;
+    }
+
+    nav {
+        position: static;
+    }
+
+    nav a {
+        margin: 3px;
+        padding: 7px 9px;
+        font-size: 13px;
+    }
+
+    main {
+        width: 94%;
+        padding: 25px 0;
+    }
+
+    main section,
+    main:has(aside) section,
+    main:has(aside) aside,
+    .login-box,
+    .register-box,
+    .feedback-form,
+    .profile-card,
+    .skills,
+    .activity,
+    .welcome,
+    .title,
+    .heading {
+        padding: 24px;
+    }
+
+    .options {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .rating {
+        flex-direction: column;
+    }
+}
