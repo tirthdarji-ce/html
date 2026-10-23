@@ -5,188 +5,109 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StudentHub - Register</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+    <script src="script.js"></script>
 </head>
 <body>
 <header>
-
-<img src="logo.png" alt="StudentHub Logo">
-
-<h1>StudentHub</h1>
-
+    <img src="logo.png" alt="StudentHub Logo">
+    <h1>StudentHub</h1>
 </header>
 
-
-
-
-
 <nav>
-
-<a href="index.html"></a>
-<a href="home.html">Home</a>
-<a href="about.html">About</a>
-<a href="register.html">Register</a>
-<a href="login.html">Login</a>
-<a href="dashboard.html">Dashboard</a>
-<a href="events.html">Events</a>
-<a href="profile.html">Profile</a>
-<a href="contact.html">Contact</a>
-<a href="admin.html">Admin</a>
-<a href="faq.html">FAQ</a>
-<a href="feedback.html">Feedback</a>
-
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="register.html">Register</a>
+    <a href="login.html">Login</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="events.html">Events</a>
+    <a href="profile.html">Profile</a>
+    <a href="contact.html">Contact</a>
+    <a href="admin.html">Admin</a>
+    <a href="faq.html">FAQ</a>
+    <a href="feedback.html">Feedback</a>
 </nav>
 
-
-
-
-
 <main>
-
-
-<div class="register-box">
-
-
-<h2>Student Registration</h2>
-
-
-
-<form>
-
-
-
-<label>Full Name</label>
-
-<input type="text" placeholder="Enter your full name" required>
-
-
-
-
-<label>Email Address</label>
-
-<input type="email" placeholder="Enter your email" required>
-
-
-
-
-
-<label>Password</label>
-
-<input type="password" placeholder="Create password" required>
-
-
-
-
-
-<label>Phone Number</label>
-
-<input type="tel" placeholder="Enter phone number">
-
-
-
-
-
-<label>Date of Birth</label>
-
-<input type="Date">
-
-
-
-
-
-
-<label>Gender</label>
-
-
-<div class="gender">
-
-<label>
-<input type="radio" name="gender"> Male
-</label>
-
-
-<label>
-<input type="radio" name="gender"> Female
-</label>
-
-
-<label>
-<input type="radio" name="gender"> Other
-</label>
-
-
-</div>
-
-
-
-
-
-<label>Course</label>
-
-
-<select>
-
-<option>Select Course</option>
-
-<option>Computer Engineering</option>
-
-<option>Information Technology</option>
-
-<option>Mechanical Engineering</option>
-
-<option>Civil Engineering</option>
-
-<option>Electrical Engineering</option>
-
-</select>
-
-
-
-
-
-<label>Address</label>
-
-<textarea rows="3" placeholder="Enter your address"></textarea>
-
-
-
-
-
-<button type="submit">
-
-Create Account
-
-</button>
-
-
-
-</form>
-
-
-
-<div class="login-link">
-
-Already have an account?
-
-<a href="login.html">Login Here</a>
-
-</div>
-
-
-
-</div>
-
-
+    <div class="container">
+        <h2>Student Registration Form</h2>
+
+        <form id="registrationForm">
+            <!-- Name -->
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name">
+            <span id="nameError" class="error"></span>
+
+            <!-- Email -->
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email">
+            <span id="emailError" class="error"></span>
+
+            <!-- Mobile -->
+            <label for="mobile">Mobile Number:</label>
+            <input type="tel" id="mobile" name="mobile" placeholder="Enter 10 digit mobile number">
+            <span id="mobileError" class="error"></span>
+
+            <!-- Password -->
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter password">
+            <span id="strength"></span>
+            <span id="passwordError" class="error"></span>
+
+            <!-- Confirm Password -->
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm password">
+            <span id="confirmError" class="error"></span>
+
+            <!-- Course -->
+            <label for="course">Course:</label>
+            <select id="course" name="course">
+                <option value="">Select Course</option>
+                <option value="Computer Engineering">Computer Engineering</option>
+                <option value="Information Technology">Information Technology</option>
+                <option value="Mechanical Engineering">Mechanical Engineering</option>
+                <option value="Civil Engineering">Civil Engineering</option>
+            </select>
+            <span id="courseError" class="error"></span>
+
+            <!-- Year -->
+            <label for="year">Year:</label>
+            <select id="year" name="year">
+                <option value="">Select Year</option>
+                <option value="1">1st Year</option>
+                <option value="2">2nd Year</option>
+                <option value="3">3rd Year</option>
+                <option value="4">4th Year</option>
+            </select>
+            <span id="yearError" class="error"></span>
+
+            <!-- Gender -->
+            <label>Gender:</label>
+            <div class="gender">
+                <input type="radio" name="gender" value="Male"> Male
+                <input type="radio" name="gender" value="Female"> Female
+                <input type="radio" name="gender" value="Other"> Other
+            </div>
+            <span id="genderError" class="error"></span>
+
+            <!-- Terms -->
+            <div class="terms">
+                <left><input type="checkbox" id="terms" name="terms"></left>
+            <label for="terms">I accept the terms and conditions</label>
+            </div>
+            <span id="termsError" class="error"></span>
+
+            <!-- Submit -->
+            <button type="submit">Register</button>
+
+            <p id="success"></p>
+        </form>
+    </div>
 </main>
 
-
-
-
-
 <footer>
-
-<p>&copy; 2026 StudentHub | All Rights Reserved</p>
-
+    <p>&copy; 2026 StudentHub | All Rights Reserved</p>
 </footer>
+
+
 </body>
 </html>

@@ -79,3 +79,150 @@ document.addEventListener("DOMContentLoaded", () => {
         if (slides.length > 0) { slides[0].classList.add("active"); setTimeout(showSlides, 4000); }
     }
 });
+
+   document.addEventListener("DOMContentLoaded", () => {
+    // 1. Notification Banner
+    if (!document.querySelector(".notice-banner")) {
+        const banner = document.createElement("div");
+        banner.className = "notice-banner";
+        banner.innerHTML = `<span>Welcome to StudentHub! Explore your student services.</span><button class="notice-close">✕</button>`;
+        document.body.prepend(banner);
+        banner.querySelector(".notice-close").addEventListener("click", () => banner.remove());
+    }
+
+    // 2. Dark/Light Mode Switcher
+    let themeBtn = document.getElementById("theme-toggle");
+    if (!themeBtn) {
+        themeBtn = document.createElement("button");
+        themeBtn.id = "theme-toggle";
+        document.body.appendChild(themeBtn);
+    }
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark") {
+        document.body.classList.add("dark-theme");
+        themeBtn.innerHTML = "☀️ Light Mode";
+    } else {
+        themeBtn.innerHTML = "🌙 Dark Mode";
+    }
+    themeBtn.addEventListener("click", () => {
+        document.body.classList.toggle("dark-theme");
+        const isDark = document.body.classList.contains("dark-theme");
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+        themeBtn.innerHTML = isDark ? "☀️ Light Mode" : "🌙 Dark Mode";
+    });
+
+    // 3. Hamburger Menu Toggle
+    const nav = document.querySelector("nav");
+    if (nav && !document.querySelector(".hamburger")) {
+        const hamburger = document.createElement("button");
+        hamburger.className = "hamburger";
+        hamburger.innerHTML = "☰";
+        nav.before(hamburger);
+        hamburger.addEventListener("click", () => nav.classList.toggle("active"));
+    }
+
+    // 4. Registration Form Validation & Submission
+    const registrationForm = document.getElementById("registrationForm");
+    if (registrationForm) {
+        registrationForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // Clear previous errors
+            document.querySelectorAll(".error").forEach(function(error) {
+                error.innerHTML = "";
+            });
+
+            const successEl = document.getElementById("success");
+            if (successEl) successEl.innerHTML = "";
+
+            let valid = true;
+
+            // Get values
+            let name = document.getElementById("name").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let mobile = document.getElementById("mobile").value.trim();
+            let password = document.getElementById("password").value;
+            let confirmPassword = document.getElementById("confirmPassword").value;
+            let course = document.getElementById("course").value;
+            let year = document.getElementById("year").value;
+            let gender = document.querySelector('input[name="gender"]:checked');
+            let terms = document.getElementById("terms").checked;
+
+            // Regular Expressions
+            let namePattern = /^[A-Za-z ]{3,}$/;
+            let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            let mobilePattern = /^[6-9][0-9]{9}$/;
+            let passwordPattern = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@#$!]).{8,}$/;
+
+            // Validations
+            if (!namePattern.test(name)) {
+                document.getElementById("nameError").innerHTML = "Enter a valid name.";
+                valid = false;
+            }
+
+            if (!emailPattern.test(email)) {
+                document.getElementById("emailError").innerHTML = "Enter a valid email.";
+                valid = false;
+            }
+
+            if (!mobilePattern.test(mobile)) {
+                document.getElementById("mobileError").innerHTML = "Enter a valid 10-digit mobile number.";
+                valid = false;
+            }
+
+            if (!passwordPattern.test(password)) {
+                document.getElementById("passwordError").innerHTML = "Password must contain 8 characters, uppercase, lowercase, number and special character.";
+                valid = false;
+            }
+
+            if (password !== confirmPassword) {
+                document.getElementById("confirmError").innerHTML = "Passwords do not match.";
+                valid = false;
+            }
+
+            if (course === "") {
+                document.getElementById("courseError").innerHTML = "Please select a course.";
+                valid = false;
+            }
+
+            if (year === "") {
+                document.getElementById("yearError").innerHTML = "Please select your year.";
+                valid = false;
+            }
+
+            if (!gender) {
+                document.getElementById("genderError").innerHTML = "Please select your gender.";
+                valid = false;
+            }
+
+            if (!terms) {
+                document.getElementById("termsError").innerHTML = "Please accept the terms and conditions.";
+                valid = false;
+            }
+
+            if (valid && successEl) {
+                successEl.innerHTML = "Registration successful!";
+            }
+        });
+    }
+
+    // 5. Password Strength Meter
+    const passwordInput = document.getElementById("password");
+    if (passwordInput) {
+        passwordInput.addEventListener("input", function() {
+            let password = this.value;
+            let strength = document.getElementById("strength");
+            if (!strength) return;
+
+            if (password.length === 0) {
+                strength.innerHTML = "";
+            } else if (password.length < 6) {
+                strength.innerHTML = "Weak";
+            } else if (password.length < 8) {
+                strength.innerHTML = "Medium";
+            } else {
+                strength.innerHTML = "Strong";
+            }
+        });
+    }
+});
