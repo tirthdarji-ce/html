@@ -90,38 +90,8 @@ document.addEventListener("DOMContentLoaded", () => {
         banner.querySelector(".notice-close").addEventListener("click", () => banner.remove());
     }
 
-    // 2. Dark/Light Mode Switcher
-    let themeBtn = document.getElementById("theme-toggle");
-    if (!themeBtn) {
-        themeBtn = document.createElement("button");
-        themeBtn.id = "theme-toggle";
-        document.body.appendChild(themeBtn);
-    }
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "dark") {
-        document.body.classList.add("dark-theme");
-        themeBtn.innerHTML = "☀️ Light Mode";
-    } else {
-        themeBtn.innerHTML = "🌙 Dark Mode";
-    }
-    themeBtn.addEventListener("click", () => {
-        document.body.classList.toggle("dark-theme");
-        const isDark = document.body.classList.contains("dark-theme");
-        localStorage.setItem("theme", isDark ? "dark" : "light");
-        themeBtn.innerHTML = isDark ? "☀️ Light Mode" : "🌙 Dark Mode";
-    });
+     // 4. Registration Form Validation & Submission
 
-    // 3. Hamburger Menu Toggle
-    const nav = document.querySelector("nav");
-    if (nav && !document.querySelector(".hamburger")) {
-        const hamburger = document.createElement("button");
-        hamburger.className = "hamburger";
-        hamburger.innerHTML = "☰";
-        nav.before(hamburger);
-        hamburger.addEventListener("click", () => nav.classList.toggle("active"));
-    }
-
-    // 4. Registration Form Validation & Submission
     const registrationForm = document.getElementById("registrationForm");
     if (registrationForm) {
         registrationForm.addEventListener("submit", function(event) {
@@ -226,3 +196,102 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+let allEventsData = { technical: [], nonTechnical: [] };
+
+document.addEventListener("DOMContentLoaded", () => {
+    fetch('event.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to load event data');
+            }
+            return response.json();
+        })
+        .then(responseJson => {
+            // Parses the nested "events" object from your JSON structure[cite: 5]
+            const eventsObj = responseJson.events || responseJson;
+            allEventsData = {
+                technical: eventsObj.technical || [],
+                nonTechnical: eventsObj.non_technical || eventsObj.nonTechnical || []
+            };
+            renderEvents(allEventsData);
+            setupSearchAndFilter();
+        })
+        .catch(error => {
+            console.error('Error fetching events:', error);
+        });
+});
+
+function renderEvents(data) {
+    renderEventsBySection(0, data.technical, 'technical');
+    renderEventsBySection(1, data.nonTechnical, 'non-technical');
+}
+
+function renderEventsBySection(sectionIndex, eventsArray, categoryKey) {
+    const eventSections = document.querySelectorAll('.event-section');
+    if (!eventSections[sectionIndex]) return;
+
+    const container = eventSections[sectionIndex].querySelector('.events');
+    if (!container) return;
+
+    container.innerHTML = '';
+
+    if (eventsArray.length === 0) {
+        container.innerHTML = '<p class="no-events" style="color: #666; grid-column: 1 / -1;">No matching events found.</p>';
+        return;
+    }
+
+    eventsArray.forEach(event => {
+        const card = document.createElement('div');
+        card.className = 'event-card';
+
+        card.innerHTML = `
+            <h3>${event.title}</h3>
+            <p>${event.description}</p>
+            <span>📅 Date: ${event.date}</span>
+        `;
+
+        container.appendChild(card);
+    });
+}
+
+function setupSearchAndFilter() {
+    const searchInput = document.getElementById('search-input');
+    const categoryFilter = document.getElementById('category-filter');
+    const eventSections = document.querySelectorAll('.event-section');
+
+    if (!searchInput || !categoryFilter) return;
+
+    function filterAndRender() {
+        const query = searchInput.value.toLowerCase().trim();
+        const selectedCategory = categoryFilter.value; // 'all', 'technical', 'non-technical'
+
+        // Helper to match text while ignoring emojis/symbols
+        const matchesQuery = (text) => {
+            const cleanText = text.replace(/[\u{1F000}-\u{1F9FF}]/gu, "").toLowerCase();
+            return cleanText.includes(query) || text.toLowerCase().includes(query);
+        };
+
+        const filteredTechnical = allEventsData.technical.filter(event => {
+            const matchesSearch = matchesQuery(event.title) || matchesQuery(event.description);
+            const matchesCategory = selectedCategory === 'all' || selectedCategory === 'technical';
+            return matchesSearch && matchesCategory;
+        });
+
+        const filteredNonTechnical = allEventsData.nonTechnical.filter(event => {
+            const matchesSearch = matchesQuery(event.title) || matchesQuery(event.description);
+            const matchesCategory = selectedCategory === 'all' || selectedCategory === 'non-technical';
+            return matchesSearch && matchesCategory;
+        });
+
+        renderEventsBySection(0, filteredTechnical, 'technical');
+        renderEventsBySection(1, filteredNonTechnical, 'non-technical');
+
+        if (eventSections[0] && eventSections[1]) {
+            eventSections[0].style.display = (selectedCategory !== 'all' && selectedCategory !== 'technical') ? 'none' : 'block';
+            eventSections[1].style.display = (selectedCategory !== 'all' && selectedCategory !== 'non-technical') ? 'none' : 'block';
+        }
+    }
+
+    searchInput.addEventListener('input', filterAndRender);
+    categoryFilter.addEventListener('change', filterAndRender);
+}

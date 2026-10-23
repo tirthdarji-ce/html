@@ -694,8 +694,8 @@ main article h3 {
     --light-blue: #121824;
     --soft-blue: #1a2332;
     --white: #1e293b;
-    --text: #f1f5f9;
-    --muted: #ffffff;
+    --text: #ffffff;
+    --muted: #000000;
     --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
@@ -876,6 +876,11 @@ select {
 
 .terms label {
     margin: 0;
+    font-weight: normal;
+}
+
+.terms input {
+    margin-right: 5px;
 }
 
 .error {
@@ -896,7 +901,7 @@ button {
     padding: 10px;
     margin-top: 20px;
     background-color: #1677ff;
-    color: white;
+    color: rgb(0, 0, 0);
     border: none;
     border-radius: 5px;
     cursor: pointer;

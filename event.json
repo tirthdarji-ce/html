@@ -1,0 +1,38 @@
+{
+"events": {
+"technical": [
+{
+"title": "🚀 Hackathon",
+"description": "A coding competition where students solve real-world problems using innovative technology solutions.",
+"date": "15 September 2027"
+},
+{
+"title": "🌐 Web Development Workshop",
+"description": "Learn HTML, CSS, JavaScript, and modern web development techniques from industry experts.",
+"date": "22 September 2027"
+},
+{
+"title": "🤖 AI & Robotics Challenge",
+"description": "Participate in robotics projects and explore the latest trends in Artificial Intelligence.",
+"date": "5 October 2027"
+}
+],
+"non_technical": [
+{
+"title": "🎤 Cultural Fest",
+"description": "Show your creativity through music, dance, drama, and cultural performances.",
+"date": "10 October 2027"
+},
+{
+"title": "🏆 Sports Tournament",
+"description": "Participate in exciting indoor and outdoor sports competitions with friends.",
+"date": "18 October 2027"
+},
+{
+"title": "📸 Photography Contest",
+"description": "Capture creative moments and showcase your photography skills.",
+"date": "25 October 2027"
+}
+]
+}
+}
