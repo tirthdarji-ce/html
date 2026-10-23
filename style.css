@@ -685,3 +685,136 @@ main article h3 {
         flex-direction: column;
     }
 }
+
+/* --- Dark Theme Color Palettes --- */
+.dark-theme {
+    --primary: #64b5f6;
+    --primary-dark: #90caf9;
+    --secondary: #1e88e5;
+    --light-blue: #121824;
+    --soft-blue: #1a2332;
+    --white: #1e293b;
+    --text: #f1f5f9;
+    --muted: #ffffff;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.dark-theme input, 
+.dark-theme select, 
+.dark-theme textarea {
+    background: #0f172a;
+    color: var(--text);
+    border-color: #334155;
+}
+
+/* Smooth transition when switching themes */
+body, header, nav, section, aside, .card, .contact-card, .box, .event-card, .faq-box, .login-box, .register-box, .form-box, .feedback-form, .profile-card {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+
+}
+/* --- 1. Notification Banner --- */
+.notice-banner {
+    background: var(--light-blue);
+    color: var(--primary-dark);
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid rgba(13, 71, 161, 0.1);
+}
+.notice-close {
+    background: var(--primary);
+    color: var(--white);
+    border: none;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+/* --- Floating Dark Mode Button (Fixed Bottom-Right Corner) --- */
+#theme-toggle {
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    width: auto !important;          
+    max-width: max-content !important; 
+    z-index: 9999 !important;
+    background: var(--primary-dark) !important;
+    color: var(--white) !important;
+    border: none !important;
+    padding: 8px 14px !important;
+    border-radius: 20px !important;
+    cursor: pointer !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    transition: 0.25s ease !important;
+}
+
+#theme-toggle:hover {
+    background: var(--primary) !important;
+    transform: translateY(-2px) !important;
+}
+/* --- 3. Hamburger Menu (Mobile) --- */
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+}
+@media (max-width: 700px) {
+    .hamburger { display: block; }
+    nav { display: none; flex-direction: column; }
+    nav.active { display: flex; }
+}
+
+/* --- 4. Collapsible FAQ --- */
+.faq-box {
+    cursor: pointer;
+}
+.faq-answer {
+    display: none;
+    margin-top: 10px;
+    color: var(--muted);
+}
+.faq-box.active .faq-answer {
+    display: block;
+}
+
+/* --- 5. Modal Popup --- */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 2000;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+.modal-overlay.open { opacity: 1; pointer-events: auto; }
+.modal-content {
+    background: var(--white);
+    padding: 30px; border-radius: 15px; width: 90%; max-width: 400px;
+    text-align: center;
+}
+
+/* --- 6. Content Slider --- */
+.slider-container {
+    position: relative; overflow: hidden; border-radius: 15px; margin: 20px 0;
+}
+.slide {
+    display: none; padding: 40px; text-align: center; background: var(--soft-blue);
+}
+.slide.active { display: block; }
