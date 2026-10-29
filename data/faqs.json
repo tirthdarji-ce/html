@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "question": "How do I register?",
+    "answer": "Open the Register page and complete the required fields.",
+    "category": "General"
+  },
+  {
+    "id": 2,
+    "question": "How do I log in?",
+    "answer": "Use your registered email and password on the Login page.",
+    "category": "General"
+  },
+  {
+    "id": 3,
+    "question": "Where are events listed?",
+    "answer": "Open the Events page to search and filter campus events.",
+    "category": "General"
+  },
+  {
+    "id": 4,
+    "question": "Can I update my profile?",
+    "answer": "Profile editing can be connected to the backend in a later practical.",
+    "category": "General"
+  },
+  {
+    "id": 5,
+    "question": "Who can use the admin panel?",
+    "answer": "Only authenticated users with an admin role should access admin actions.",
+    "category": "General"
+  },
+  {
+    "id": 6,
+    "question": "How do I contact support?",
+    "answer": "Use the Contact page form.",
+    "category": "General"
+  },
+  {
+    "id": 7,
+    "question": "What is StudentHub?",
+    "answer": "A student portal for resources, activities, and student services.",
+    "category": "General"
+  },
+  {
+    "id": 8,
+    "question": "How do I reset my password?",
+    "answer": "Use the password reset feature when it is configured by the administrator.",
+    "category": "General"
+  },
+  {
+    "id": 9,
+    "question": "Is the website mobile friendly?",
+    "answer": "Yes, the layout uses responsive CSS and a collapsible navigation menu.",
+    "category": "General"
+  },
+  {
+    "id": 10,
+    "question": "Does the theme choice persist?",
+    "answer": "Yes, the browser stores your theme preference in localStorage.",
+    "category": "General"
+  },
+  {
+    "id": 11,
+    "question": "How can I send feedback?",
+    "answer": "Open Feedback, complete the form, and submit it.",
+    "category": "General"
+  },
+  {
+    "id": 12,
+    "question": "How are passwords stored?",
+    "answer": "The backend practicals use password_hash rather than storing plain-text passwords.",
+    "category": "General"
+  },
+  {
+    "id": 13,
+    "question": "What is an event category?",
+    "answer": "Events are grouped into Technical, Cultural, or Sports categories.",
+    "category": "General"
+  },
+  {
+    "id": 14,
+    "question": "How do I search events?",
+    "answer": "Type a keyword in the event search field and select a category if needed.",
+    "category": "General"
+  },
+  {
+    "id": 15,
+    "question": "Where is data stored?",
+    "answer": "Frontend sample data is stored in JSON files; later practicals use MySQL.",
+    "category": "General"
+  }
+]

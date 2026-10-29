@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="StudentHub student portal">
+  <title>Events | StudentHub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <img src="assets/logo.png" alt="StudentHub education logo" class="logo">
+  <div><h1>StudentHub</h1><p>Learn · Connect · Grow</p></div>
+  <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light and dark theme">☾ Theme</button>
+</header>
+<nav class="main-nav" aria-label="Main navigation">
+  <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks">☰ Menu</button>
+  <div class="nav-links" id="navLinks"><a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="register.html">Register</a>
+<a href="login.html">Login</a>
+<a href="dashboard.html">Dashboard</a>
+<a href="events.html">Events</a>
+<a href="profile.html">Profile</a>
+<a href="contact.html">Contact</a>
+<a href="admin.html">Admin</a>
+<a href="faq.html">FAQ</a>
+<a href="feedback.html">Feedback</a></div>
+</nav>
+<main id="main" class="page-wrap">
+
+<section class="page-heading"><p class="eyebrow">CAMPUS LIFE</p><h2>Upcoming Events</h2><p class="lead">Discover activities, learn new skills, and connect with your campus community.</p></section>
+<div class="toolbar"><label for="eventSearch">Search events</label><input id="eventSearch" type="search" placeholder="Search by title or category"><label for="eventCategory">Category</label><select id="eventCategory"><option value="all">All categories</option><option value="Technical">Technical</option><option value="Cultural">Cultural</option><option value="Sports">Sports</option></select></div>
+<div id="eventList" class="card-grid" aria-live="polite"><p>Loading events…</p></div>
+<div class="pagination"><button id="prevEvents" class="button button-outline" type="button">Previous</button><span id="pageInfo">Page 1</span><button id="nextEvents" class="button button-outline" type="button">Next</button></div>
+
+</main>
+<footer class="site-footer"><p>&copy; 2026 StudentHub · ITUE203 Web Development Frameworks</p></footer>
+<script src="script.js" defer></script>
+
+</body>
+</html>

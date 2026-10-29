@@ -1,0 +1,107 @@
+[
+  {
+    "id": 1,
+    "title": "Hackathon",
+    "category": "Technical",
+    "date": "2026-11-05",
+    "description": "Build a prototype and solve a real-world challenge."
+  },
+  {
+    "id": 2,
+    "title": "Web Development Workshop",
+    "category": "Technical",
+    "date": "2026-11-12",
+    "description": "Practice HTML, CSS, JavaScript, and responsive UI."
+  },
+  {
+    "id": 3,
+    "title": "AI & Robotics Challenge",
+    "category": "Technical",
+    "date": "2026-11-18",
+    "description": "Explore artificial intelligence and robotics projects."
+  },
+  {
+    "id": 4,
+    "title": "Cultural Fest",
+    "category": "Cultural",
+    "date": "2026-11-22",
+    "description": "Celebrate music, dance, drama, and campus creativity."
+  },
+  {
+    "id": 5,
+    "title": "Sports Tournament",
+    "category": "Sports",
+    "date": "2026-11-27",
+    "description": "Join friendly indoor and outdoor competitions."
+  },
+  {
+    "id": 6,
+    "title": "Photography Contest",
+    "category": "Cultural",
+    "date": "2026-12-02",
+    "description": "Capture creative moments around campus."
+  },
+  {
+    "id": 7,
+    "title": "Cyber Security Basics",
+    "category": "Technical",
+    "date": "2026-12-05",
+    "description": "Learn the foundations of secure digital practices."
+  },
+  {
+    "id": 8,
+    "title": "Coding Sprint",
+    "category": "Technical",
+    "date": "2026-12-08",
+    "description": "Solve programming problems with your team."
+  },
+  {
+    "id": 9,
+    "title": "Music Evening",
+    "category": "Cultural",
+    "date": "2026-12-12",
+    "description": "Enjoy performances from student artists."
+  },
+  {
+    "id": 10,
+    "title": "Football Trials",
+    "category": "Sports",
+    "date": "2026-12-15",
+    "description": "Show your skills and join the college team."
+  },
+  {
+    "id": 11,
+    "title": "UI/UX Design Jam",
+    "category": "Technical",
+    "date": "2026-12-18",
+    "description": "Design an accessible student-focused interface."
+  },
+  {
+    "id": 12,
+    "title": "Chess Championship",
+    "category": "Sports",
+    "date": "2026-12-21",
+    "description": "Compete in the campus chess tournament."
+  },
+  {
+    "id": 13,
+    "title": "Project Expo",
+    "category": "Technical",
+    "date": "2027-01-05",
+    "description": "Present student projects and prototypes."
+  },
+  {
+    "id": 14,
+    "title": "Drama Night",
+    "category": "Cultural",
+    "date": "2027-01-09",
+    "description": "Perform and enjoy student theatre."
+  },
+  {
+    "id": 15,
+    "title": "Badminton Open",
+    "category": "Sports",
+    "date": "2027-01-15",
+    "description": "Take part in the campus badminton event."
+  }
+]

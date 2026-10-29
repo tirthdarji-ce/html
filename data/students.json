@@ -1,0 +1,107 @@
+[
+  {
+    "id": 1,
+    "name": "Aarav Patel",
+    "email": "student1@charusat.edu.in",
+    "course": "Computer Engineering",
+    "year": "1st Year"
+  },
+  {
+    "id": 2,
+    "name": "Diya Shah",
+    "email": "student2@charusat.edu.in",
+    "course": "Information Technology",
+    "year": "2st Year"
+  },
+  {
+    "id": 3,
+    "name": "Krish Mehta",
+    "email": "student3@charusat.edu.in",
+    "course": "Electronics Engineering",
+    "year": "3st Year"
+  },
+  {
+    "id": 4,
+    "name": "Mahi Desai",
+    "email": "student4@charusat.edu.in",
+    "course": "Computer Engineering",
+    "year": "4st Year"
+  },
+  {
+    "id": 5,
+    "name": "Dev Joshi",
+    "email": "student5@charusat.edu.in",
+    "course": "Information Technology",
+    "year": "1st Year"
+  },
+  {
+    "id": 6,
+    "name": "Riya Parmar",
+    "email": "student6@charusat.edu.in",
+    "course": "Electronics Engineering",
+    "year": "2st Year"
+  },
+  {
+    "id": 7,
+    "name": "Vivaan Trivedi",
+    "email": "student7@charusat.edu.in",
+    "course": "Computer Engineering",
+    "year": "3st Year"
+  },
+  {
+    "id": 8,
+    "name": "Anaya Modi",
+    "email": "student8@charusat.edu.in",
+    "course": "Information Technology",
+    "year": "4st Year"
+  },
+  {
+    "id": 9,
+    "name": "Arjun Shah",
+    "email": "student9@charusat.edu.in",
+    "course": "Electronics Engineering",
+    "year": "1st Year"
+  },
+  {
+    "id": 10,
+    "name": "Isha Patel",
+    "email": "student10@charusat.edu.in",
+    "course": "Computer Engineering",
+    "year": "2st Year"
+  },
+  {
+    "id": 11,
+    "name": "Reyansh Dave",
+    "email": "student11@charusat.edu.in",
+    "course": "Information Technology",
+    "year": "3st Year"
+  },
+  {
+    "id": 12,
+    "name": "Saanvi Mehta",
+    "email": "student12@charusat.edu.in",
+    "course": "Electronics Engineering",
+    "year": "4st Year"
+  },
+  {
+    "id": 13,
+    "name": "Aditya Shah",
+    "email": "student13@charusat.edu.in",
+    "course": "Computer Engineering",
+    "year": "1st Year"
+  },
+  {
+    "id": 14,
+    "name": "Myra Joshi",
+    "email": "student14@charusat.edu.in",
+    "course": "Information Technology",
+    "year": "2st Year"
+  },
+  {
+    "id": 15,
+    "name": "Kabir Desai",
+    "email": "student15@charusat.edu.in",
+    "course": "Electronics Engineering",
+    "year": "3st Year"
+  }
+]

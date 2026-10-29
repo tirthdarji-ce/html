@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="StudentHub student portal">
+  <title>Admin | StudentHub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <img src="assets/logo.png" alt="StudentHub education logo" class="logo">
+  <div><h1>StudentHub</h1><p>Learn · Connect · Grow</p></div>
+  <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light and dark theme">☾ Theme</button>
+</header>
+<nav class="main-nav" aria-label="Main navigation">
+  <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks">☰ Menu</button>
+  <div class="nav-links" id="navLinks"><a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="register.html">Register</a>
+<a href="login.html">Login</a>
+<a href="dashboard.html">Dashboard</a>
+<a href="events.html">Events</a>
+<a href="profile.html">Profile</a>
+<a href="contact.html">Contact</a>
+<a href="admin.html">Admin</a>
+<a href="faq.html">FAQ</a>
+<a href="feedback.html">Feedback</a></div>
+</nav>
+<main id="main" class="page-wrap">
+
+<section class="page-heading"><p class="eyebrow">ADMINISTRATION</p><h2>Admin Panel</h2><p class="lead">Management tools are restricted to authorized administrators in the PHP version.</p></section>
+<section class="stats-grid"><article class="stat-card"><span>Total students</span><strong>250</strong></article><article class="stat-card"><span>Assignments</span><strong>48</strong></article><article class="stat-card"><span>Notices</span><strong>15</strong></article><article class="stat-card"><span>Events</span><strong>10</strong></article></section>
+<section class="card-grid"><article class="card"><h3>Manage Students</h3><p>Add, view, edit, search, and remove student records.</p><a href="php/students.php">Open student management →</a></article><article class="card"><h3>Manage Events</h3><p>Create events and validate uploaded posters.</p><a href="php/events_admin.php">Open event management →</a></article><article class="card"><h3>Audit Log</h3><p>Review administrative actions recorded by the backend.</p><a href="php/audit_logs.php">View audit log →</a></article></section>
+
+</main>
+<footer class="site-footer"><p>&copy; 2026 StudentHub · ITUE203 Web Development Frameworks</p></footer>
+<script src="script.js" defer></script>
+
+</body>
+</html>

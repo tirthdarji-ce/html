@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="StudentHub student portal">
+  <title>Contact | StudentHub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <img src="assets/logo.png" alt="StudentHub education logo" class="logo">
+  <div><h1>StudentHub</h1><p>Learn · Connect · Grow</p></div>
+  <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light and dark theme">☾ Theme</button>
+</header>
+<nav class="main-nav" aria-label="Main navigation">
+  <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks">☰ Menu</button>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="register.html">Register</a>
+    <a href="login.html">Login</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="events.html">Events</a>
+    <a href="profile.html">Profile</a>
+    <a href="contact.html">Contact</a>
+    <a href="admin.html">Admin</a>
+    <a href="faq.html">FAQ</a>
+    <a href="feedback.html">Feedback</a>
+  </div>
+</nav>
+<main id="main" class="page-wrap">
+
+<section class="page-heading">
+  <p class="eyebrow">WE ARE HERE TO HELP</p>
+  <h2>Contact StudentHub</h2>
+  <p class="lead">Send your question to the StudentHub support team.</p>
+</section>
+
+<div class="card-grid">
+  <article class="card"><h3>📍 Address</h3><p>CHARUSAT Campus<br>Gujarat, India</p></article>
+  <article class="card"><h3>📧 Email</h3><p>support@studenthub.example</p><p class="muted">Demo address; replace with your official contact.</p></article>
+  <article class="card"><h3>📞 Phone</h3><p>Contact details not configured.</p></article>
+</div>
+
+<section class="form-panel narrow">
+  <h2>Send a message</h2>
+  
+  <!-- AHIYA MESSAGE BATAVVA MATE NU DIV ADD KARELU CHHE -->
+  <div id="formMessage" style="display: none; padding: 1rem; margin-bottom: 1.5rem; border-radius: 8px; font-weight: bold;"></div>
+  
+  <form action="php/contact.php" method="post">
+    <div class="field"><label for="contactName">Name</label><input id="contactName" name="name" required></div>
+    <div class="field"><label for="contactEmail">Email</label><input id="contactEmail" name="email" type="email" required></div>
+    <div class="field"><label for="contactMessage">Message</label><textarea id="contactMessage" name="message" rows="5" required></textarea></div>
+    <button class="button" type="submit">Submit Message</button>
+  </form>
+</section>
+
+</main>
+<footer class="site-footer">
+  <p>&copy; 2026 StudentHub · ITUE203 Web Development Frameworks</p>
+</footer>
+
+<script src="script.js" defer></script>
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const msgDiv = document.getElementById('formMessage');
+    
+    if (urlParams.has('status')) {
+        msgDiv.style.display = 'block';
+        if (urlParams.get('status') === 'success') {
+            msgDiv.style.backgroundColor = '#d4edda';
+            msgDiv.style.color = '#155724';
+            msgDiv.style.border = '1px solid #c3e6cb';
+            msgDiv.textContent = 'Thank you! Your message has been saved successfully.';
+        } else if (urlParams.get('status') === 'error') {
+            msgDiv.style.backgroundColor = '#f8d7da';
+            msgDiv.style.color = '#721c24';
+            msgDiv.style.border = '1px solid #f5c6cb';
+            msgDiv.textContent = 'Error processing your request. Please ensure all inputs are valid.';
+        }
+    }
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login | StudentHub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <img src="assets/logo.png" alt="StudentHub education logo" class="logo">
+
+  <div><h1>StudentHub</h1><p>Learn · Connect · Grow</p></div>
+</header>
+<nav class="main-nav" aria-label="Main navigation">
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="register.html">Register</a>
+    <a href="login.html">Login</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+<main id="main" class="page-wrap">
+
+<section class="form-panel narrow">
+  <p class="eyebrow">WELCOME BACK</p>
+  <h2>Student Login</h2>
+
+  <!-- Error Message Box -->
+  <div id="loginMessage" style="display: none; padding: 1rem; margin-bottom: 1rem; border-radius: 4px; font-weight: bold; text-align: center;"></div>
+  <form action="php/login.php" method="post">
+    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
+    <div class="form-grid">
+      <div class="field">
+        <label for="email">Email address</label>
+        <input id="email" name="email" type="email" required>
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" required>
+      </div>
+    </div>
+    <button class="button" type="submit">Login</button>
+  </form>
+</section>
+
+</main>
+<footer class="site-footer"><p>&copy; 2026 StudentHub</p></footer>
+
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const msgDiv = document.getElementById('loginMessage');
+    
+    if (urlParams.has('error')) {
+        msgDiv.style.display = 'block';
+        msgDiv.style.backgroundColor = '#f8d7da';
+        msgDiv.style.color = '#721c24';
+        msgDiv.style.border = '1px solid #f5c6cb';
+        
+        const errorType = urlParams.get('error');
+        if (errorType === 'wrong_password') {
+            msgDiv.textContent = 'Incorrect password. Please try again.';
+        } else if (errorType === 'not_found') {
+            msgDiv.textContent = 'No account found with this email.';
+        } else if (errorType === 'invalid') {
+            msgDiv.textContent = 'Please fill in all fields.';
+        }
+    }
+</script>
+
+</body>
+</html>

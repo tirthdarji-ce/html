@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="StudentHub student portal">
+  <title>Register | StudentHub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <img src="assets/logo.png" alt="StudentHub education logo" class="logo">
+  <div><h1>StudentHub</h1><p>Learn · Connect · Grow</p></div>
+  <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light and dark theme">☾ Theme</button>
+</header>
+<nav class="main-nav" aria-label="Main navigation">
+  <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks">☰ Menu</button>
+  <div class="nav-links" id="navLinks"><a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="register.html">Register</a>
+<a href="login.html">Login</a>
+<a href="dashboard.html">Dashboard</a>
+<a href="events.html">Events</a>
+<a href="profile.html">Profile</a>
+<a href="contact.html">Contact</a>
+<a href="admin.html">Admin</a>
+<a href="faq.html">FAQ</a>
+<a href="feedback.html">Feedback</a></div>
+</nav>
+<main id="main" class="page-wrap">
+
+<section class="form-panel narrow"><p class="eyebrow">JOIN STUDENTHUB</p><h2>Student Registration</h2><p class="muted">Fields marked * are required.</p>
+
+<!-- ADDED: Message Div for success/error feedback -->
+<div id="formMessage" style="display: none; padding: 1rem; margin-bottom: 1rem; border-radius: 4px; font-weight: bold; text-align: center;"></div>
+
+<form id="registerForm" action="php/register.php" method="post" novalidate>
+<div class="form-grid">
+<!-- UPDATED: name="fullName" -->
+<div class="field"><label for="fullName">Full name *</label><input id="fullName" name="fullName" required minlength="2" autocomplete="name"><small class="error" id="nameError"></small></div>
+<div class="field"><label for="email">Email address *</label><input id="email" name="email" type="email" required autocomplete="email"><small class="error" id="emailError"></small></div>
+<div class="field"><label for="mobile">Mobile number *</label><input id="mobile" name="mobile" inputmode="numeric" pattern="[6-9][0-9]{9}" required placeholder="10-digit Indian mobile"><small class="error" id="mobileError"></small></div>
+<div class="field"><label for="course">Course *</label><select id="course" name="course" required><option value="">Choose course</option><option>Computer Engineering</option><option>Information Technology</option><option>Electronics Engineering</option><option>Mechanical Engineering</option></select><small class="error" id="courseError"></small></div>
+<div class="field"><label for="year">Year *</label><select id="year" name="year" required><option value="">Choose year</option><option value="1">1st Year</option><option value="2">2nd Year</option><option value="3">3rd Year</option><option value="4">4th Year</option></select></div>
+<div class="field"><label for="password">Password *</label><input id="password" name="password" type="password" minlength="8" required autocomplete="new-password"><small id="passwordStrength" class="muted">Use 8+ characters with letters and numbers.</small><small class="error" id="passwordError"></small></div>
+<div class="field"><label for="confirmPassword">Confirm password *</label><input id="confirmPassword" name="confirm_password" type="password" required autocomplete="new-password"><small class="error" id="confirmError"></small></div>
+
+<label class="check-line"><input type="checkbox" id="terms" name="terms" required> I agree to the terms and conditions *</label><small class="error" id="termsError"></small>
+<button class="button" type="submit">Create Account</button><p id="registerMessage" role="status" aria-live="polite"></p>
+
+</form></section>
+
+</main>
+<footer class="site-footer"><p>&copy; 2026 StudentHub · ITUE203 Web Development Frameworks</p></footer>
+<script src="script.js" defer></script>
+
+<!-- ADDED: JavaScript to handle status messages -->
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const msgDiv = document.getElementById('formMessage');
+    
+    if (urlParams.has('status')) {
+        msgDiv.style.display = 'block';
+        const status = urlParams.get('status');
+        const msg = urlParams.get('msg');
+        
+        if (status === 'success') {
+            msgDiv.style.backgroundColor = '#d4edda';
+            msgDiv.style.color = '#155724';
+            msgDiv.style.border = '1px solid #c3e6cb';
+            msgDiv.textContent = 'Registration successful! You can now log in.';
+        } else if (status === 'error') {
+            msgDiv.style.backgroundColor = '#f8d7da';
+            msgDiv.style.color = '#721c24';
+            msgDiv.style.border = '1px solid #f5c6cb';
+            if (msg === 'duplicate_email') {
+                msgDiv.textContent = 'This email is already registered. Please log in.';
+            } else {
+                msgDiv.textContent = 'Error processing registration. Please check your inputs or database.';
+            }
+        }
+    }
+</script>
+</body>
+</html>
