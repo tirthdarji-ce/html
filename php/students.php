@@ -1,12 +1,56 @@
 <?php
-require_once __DIR__.'/config.php'; require_admin();
-if ($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['delete_id'])) {
-  $id=(int)$_POST['delete_id']; $s=db()->prepare('DELETE FROM students WHERE id=?'); $s->execute([$id]);
-  $log=db()->prepare('INSERT INTO audit_logs(user_id,action,details) VALUES(?,?,?)'); $log->execute([$_SESSION['user_id'],'DELETE_STUDENT','student_id='.$id]);
-  header('Location: students.php'); exit;
-}
-$q=trim($_GET['q']??'');
-$sql='SELECT s.id,u.name,u.email,s.course,s.year_level FROM students s JOIN users u ON u.id=s.user_id';
-if($q!==''){ $sql.=' WHERE u.name LIKE :q OR u.email LIKE :q OR s.course LIKE :q'; }
-$sql.=' ORDER BY s.id DESC'; $stmt=db()->prepare($sql); if($q!=='')$stmt->bindValue(':q','%'.$q.'%'); $stmt->execute(); $rows=$stmt->fetchAll();
-?><!doctype html><html lang="en"><meta charset="utf-8"><title>Student management</title><link rel="stylesheet" href="../style.css"><main class="page-wrap"><h1>Student Management</h1><form method="get"><label>Search name, email, course <input name="q" value="<?=e($q)?>"></label><button class="button">Search</button></form><table><thead><tr><th>ID</th><th>Name</th><th>Email</th><th>Course</th><th>Year</th><th>Action</th></tr></thead><tbody><?php foreach($rows as $r): ?><tr><?php foreach(['id','name','email','course','year_level'] as $k): ?><td><?=e((string)$r[$k])?></td><?php endforeach; ?><td><form method="post" onsubmit="return confirm('Delete this student?')"><input type="hidden" name="delete_id" value="<?=$r['id']?>"><button class="button" type="submit">Delete</button></form></td></tr><?php endforeach; ?></tbody></table><p><a href="admin_dashboard.php">Back to dashboard</a></p></main></html>
+require_once __DIR__.'/config.php'; 
+require_admin();
+
+// Database mathi badha students no data lavvani query
+$students = db()->query("SELECT * FROM students ORDER BY id DESC")->fetchAll();
+?>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Manage Students</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white; }
+        .table th, .table td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        .table th { background-color: #f4f4f4; }
+        .btn-add { background: #198754; color: white; padding: 10px 15px; text-decoration: none; border-radius: 4px; display: inline-block; font-weight: bold; }
+    </style>
+</head>
+<body>
+<main class="page-wrap">
+    <h1>Manage Students</h1>
+    
+    <!-- AHIYA CHHE TARU ADD NEW STUDENT BUTTON -->
+    <a href="add_student.php" class="btn-add">+ Add New Student</a>
+    
+    <!-- Admin Dashboard par pacha javani link (Tari admin dashboard ni file nu je naam hoy te ahiya href ma nakhi deje, jem ke dashboard_admin.php) -->
+    <a href="admin_dashboard.php" style="margin-left: 15px; color: #0d6efd; text-decoration: none; font-weight: bold;">&larr; Back to Dashboard</a>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Course</th>
+                <th>Role</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach($students as $row): ?>
+            <tr>
+                <td><?=e($row['id'])?></td>
+                <td><?=e($row['full_name'])?></td>
+                <td><?=e($row['email'])?></td>
+                <td><?=e($row['course'])?></td>
+                <td><?=e($row['role'])?></td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>

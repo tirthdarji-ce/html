@@ -1,4 +1,5 @@
 "use strict";
+
 document.addEventListener("DOMContentLoaded", () => {
   const menuToggle = document.querySelector("#menuToggle");
   const navLinks = document.querySelector("#navLinks");
@@ -55,32 +56,63 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  const eventList = document.querySelector("#eventList");
-  if (eventList) {
-    let events = [], currentPage = 1;
-    const perPage = 6;
-    const search = document.querySelector("#eventSearch");
-    const category = document.querySelector("#eventCategory");
-    const render = () => {
-      const term = search.value.trim().toLowerCase();
-      const type = category.value;
-      const filtered = events.filter(e => (e.title + " " + e.description + " " + e.category).toLowerCase().includes(term) && (type === "all" || e.category === type));
-      filtered.sort((a,b) => a.date.localeCompare(b.date));
-      const totalPages = Math.max(1, Math.ceil(filtered.length / perPage));
-      currentPage = Math.min(currentPage, totalPages);
-      const shown = filtered.slice((currentPage-1)*perPage, currentPage*perPage);
-      eventList.innerHTML = shown.length ? shown.map(e => `<article class="card event-card"><span class="pill">${escapeHTML(e.category)}</span><h3>${escapeHTML(e.title)}</h3><p>${escapeHTML(e.description)}</p><p class="event-meta">📅 ${escapeHTML(e.date)}</p></article>`).join("") : "<p>No events match your search.</p>";
-      document.querySelector("#pageInfo").textContent = `Page ${currentPage} of ${totalPages}`;
-      document.querySelector("#prevEvents").disabled = currentPage <= 1;
-      document.querySelector("#nextEvents").disabled = currentPage >= totalPages;
+  // Practical 13: Admin Event Management & Live Search (api_events.php sathe integration)
+  const eventTableBody = document.querySelector("#eventTableBody");
+  if (eventTableBody) {
+    let allEvents = [];
+    const searchBox = document.querySelector("#searchBox");
+
+    const displayEvents = (events) => {
+      eventTableBody.innerHTML = "";
+      if (events.length > 0) {
+        events.forEach(event => {
+          let tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td><img src="posters/${escapeHTML(event.poster_image)}" alt="Poster" width="60" style="border-radius: 4px;"></td>
+            <td>${escapeHTML(event.title)}</td>
+            <td>${escapeHTML(event.category)}</td>
+            <td>${escapeHTML(event.event_date)}</td>
+            <td>
+                <a href="delete_event.php?id=${event.id}" class="btn" style="background: #dc3545;" onclick="return confirm('Are you sure you want to delete this event?');">Delete</a>
+            </td>
+          `;
+          eventTableBody.appendChild(tr);
+        });
+      } else {
+        eventTableBody.innerHTML = `<tr><td colspan="5" style="text-align: center;">No matching events found.</td></tr>`;
+      }
     };
-    function escapeHTML(value) { return String(value).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
-    fetch("data/events.json").then(response => { if (!response.ok) throw new Error("Could not load events."); return response.json(); })
-      .then(data => { events = data; render(); })
-      .catch(() => { eventList.innerHTML = "<p>Unable to load events. Start the project using a local server and try again.</p>"; });
-    search.addEventListener("input", () => { currentPage=1; render(); });
-    category.addEventListener("change", () => { currentPage=1; render(); });
-    document.querySelector("#prevEvents").addEventListener("click", () => { currentPage--; render(); });
-    document.querySelector("#nextEvents").addEventListener("click", () => { currentPage++; render(); });
+
+    function escapeHTML(value) { 
+      return String(value).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); 
+    }
+
+    // api_events.php mathi async data fetch karvo
+    fetch("api_events.php")
+      .then(response => { 
+        if (!response.ok) throw new Error("Could not load events."); 
+        return response.json(); 
+      })
+      .then(result => { 
+        if (result.status === "success") {
+          allEvents = result.data;
+          displayEvents(allEvents);
+        } else {
+          eventTableBody.innerHTML = `<tr><td colspan="5" style="text-align: center;">No events created yet.</td></tr>`;
+        }
+      })
+      .catch(() => { 
+        eventTableBody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: red;">Failed to load events.</td></tr>`; 
+      });
+
+    if (searchBox) {
+      searchBox.addEventListener("input", () => {
+        const query = searchBox.value.trim().toLowerCase();
+        const filtered = allEvents.filter(event => 
+          (event.title + " " + event.description + " " + event.category).toLowerCase().includes(query)
+        );
+        displayEvents(filtered);
+      });
+    }
   }
 });
